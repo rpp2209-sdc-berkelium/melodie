@@ -1,2 +1,2 @@
 # melodie
-individual API service
+Questions and answers API service for Project Atelier
