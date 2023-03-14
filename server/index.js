@@ -1,3 +1,5 @@
-const { getQuestions } = require('../db/db.js');
+const { getQuestions, getAnswers} = require('../db/db.js');
 
-return getQuestions("5");
+getAnswers("5", function (res) {
+  console.log('res', res)
+});
