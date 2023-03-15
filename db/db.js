@@ -25,27 +25,35 @@ function resolvePhotos(aId) {
 }
 
 const getQuestions = async (productId, page, count) => {
-  var qs = await resolveQuestions(productId);
-  var fullQs = qs.rows.map(async (q, index) => {
-    q.answers = {};
-    await getAnswers(q.question_id, function (a) {
-      q.answers[a.id] = a;
-    })
-    return q;
-  });
-
-  response = await Promise.all(fullQs);
-  // console.log(JSON.stringify(response, null, '\t'))
-  return response;
+  try {
+    var qs = await resolveQuestions(productId);
+    var fullQs = qs.rows.map(async (q, index) => {
+      q.answers = {};
+      await getAnswers(q.question_id, function (a) {
+        q.answers[a.id] = a;
+      })
+      return q;
+    });
+    response = await Promise.all(fullQs);
+    return response;
+  } catch (err) {
+    console.log('an error occurred!');
+    return err;
+  }
 };
 
 const getAnswers = async (questionId, callback, page, count) => {
-  var as = await resolveAnswers(questionId);
-  for (var i = 0; i < as.rows.length; i++) {
-    let a = as.rows[i];
-    let photos = await resolvePhotos(a.id);
-    a.photos = photos.rows;
-    callback(a);
+  try {
+    var as = await resolveAnswers(questionId);
+    for (var i = 0; i < as.rows.length; i++) {
+      let a = as.rows[i];
+      let photos = await resolvePhotos(a.id);
+      a.photos = photos.rows;
+      callback(a);
+    }
+  } catch (err) {
+    console.log('an error occurred!');
+    return err;
   }
 }
 
