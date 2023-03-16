@@ -15,7 +15,10 @@ app.get('/qa/questions', (req, res) => {
       "product_id": req.query.product_id,
       "results": results
     })
-  });
+  })
+  .catch((err) => {
+    res.status(400).send('An error occurred getting questions' + err);
+  })
 });
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
@@ -32,7 +35,10 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
       "count": req.query.count,
       "results": results
     })
-  });
+  })
+  .catch((err) => {
+    res.status(400).send('An error occurred getting answers' + err);
+  })
 });
 
 app.listen(port, () => {
