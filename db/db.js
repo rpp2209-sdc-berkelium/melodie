@@ -98,7 +98,7 @@ const addAnswer = async (qId, aData) => {
 };
 
 const markQuestionHelpful = async (qId) => {
-  await incrementHelpfulness(qId);
+  await incrementQuestionHelpfulness(qId);
 };
 
 const reportQuestion = async (qId) => {
