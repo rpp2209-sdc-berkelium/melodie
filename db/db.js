@@ -2,7 +2,7 @@ require('dotenv').config()
 const { Client } = require('pg');
 
 const client = new Client({
-  database: 'testqa2',
+  database: process.env.POSTGRESQL_DB,
   user: process.env.POSTGRESQL_USER,
   password: process.env.POSTGRESQL_PASSWORD
 });
