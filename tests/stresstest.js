@@ -17,8 +17,8 @@ export const options = {
 export default function () {
   const BASE_URL = "http://localhost:3001";
 
-  // GET questions list
-  // http.get(`${BASE_URL}/qa/questions/?product_id=${randomIntBetween(900000, 1000000)}`);
+  GET questions list
+  http.get(`${BASE_URL}/qa/questions/?product_id=${randomIntBetween(900000, 1000000)}`);
 
   // // GET answers list
   // http.get(`${BASE_URL}/qa/questions/${randomIntBetween(3167067, 3518963)}/answers`);

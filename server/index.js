@@ -5,6 +5,7 @@ const port = 3001;
 const { getQuestions, getAnswers, addQuestion, addAnswer, markQuestionHelpful, reportQuestion, markAnswerHelpful, reportAnswer} = require('../db/db.js');
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '..')));
 
 app.get('/qa/questions', (req, res) => {
   var page = req.query.page || 1;
